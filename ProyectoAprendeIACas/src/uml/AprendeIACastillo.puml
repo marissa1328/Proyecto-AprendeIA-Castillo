@@ -1,0 +1,17 @@
+@startuml
+start
+:Ingresar Usuario;
+:Validar Usuario;
+
+if({¿Es valido?}) then(SI)
+    :Acceder Sistema;
+    : Mostrar modulos y avances;
+
+else (NO)
+    :Mostrar Error;
+    :Reintentar;
+endif
+
+stop
+
+@enduml

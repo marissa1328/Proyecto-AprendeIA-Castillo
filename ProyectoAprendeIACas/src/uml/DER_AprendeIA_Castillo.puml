@@ -1,0 +1,40 @@
+@startuml
+entity "estudiante" as estudiante{
+    *id_estudiante :INT<<PK>>
+    --
+    *nombre: VARCHAR(100)
+    *email: VARCHAR(100)
+    *contraseña: VARCHAR(100)
+    *progreso: INT(10)
+}
+entity "curso" as curso{
+    *id_curso :INT<<PK>>
+    --
+    *titulo: VARCHAR(100)
+    *desripcion: VARCHAR(100)   
+}
+entity "modulo" as modulo{
+    *id_modulo :INT<<PK>>
+    *id_curso :INT<<PK>>
+    --
+    *titulo: VARCHAR(100)
+    *contenido: VARCHAR(100)
+}
+entity "evaluacion" as evaluacion{
+    *id_evaluacion :INT<<PK>>
+    --
+    *id_modulo :INT<<FK>>
+    *nota_minima: VARCHAR(100)
+}
+entity "progreso" as progreso{
+    *id_progreso :INT<<PK>>
+    --
+    *id_estudiante :INT<<PK>>
+    *id_modulo :INT<<FK>>
+    *porsentaje :VARCHAR(100)
+}
+curso ||--|{modulo:"contiene (1:N)"
+modulo ||--|{evaluacion:"tiene (1:1)"}
+estudiante }|--||curso:"cursa/inscrito"
+estudiante }|--||progreso:"contiene "
+@enduml
